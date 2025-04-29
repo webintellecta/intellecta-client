@@ -5,10 +5,7 @@ import { VscSettings } from "react-icons/vsc";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SpinningLoader from "../../components/Loaders/SpinningLoader";
-// import { toast } from "react-toastify";
-
-// import axiosInstance from "../../utils/axiosInstance";
-import axios from "axios";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface Course {
   _id: string;
@@ -30,8 +27,8 @@ interface ProgressMap {
 // Course progress API call
 const fetchCourseProgress = async (courseId: string) => {
   try {
-    const response = await axios.get(
-      `https://intellecta-content-service.onrender.com/api/progress/${courseId}`,
+    const response = await axiosInstance.get(
+      `/progress/${courseId}`,
       { withCredentials: true }
     );
     return response.data.data;
@@ -54,8 +51,8 @@ const Courses = () => {
   };
 
   const fetchCourses = async () => {
-    const response = await axios.get(
-      `https://intellecta-content-service.onrender.com/api/courses/subject/${category}`,
+    const response = await axiosInstance.get(
+      `/courses/subject/${category}`,
       { withCredentials: true }
     );
     console.log("checking...",response.data);

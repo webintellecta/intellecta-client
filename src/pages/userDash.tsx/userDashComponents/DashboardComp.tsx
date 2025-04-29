@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import Card from "../../../components/cards/uiCard/Card";
 import BarChart from "../../../components/graph/BarChart";
 // import DonutChart from "../../../components/graph/DonutChart";
-import axios from "axios";
+import axiosInstance from "../../../utils/axiosInstance";
 // import { useState } from "react";
 
 
@@ -13,8 +13,8 @@ const DashboardComp = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [""],
     queryFn: async () => {
-      const response = await axios.get(
-        "https://intellecta-content-service.onrender.com/api/progress/allusercourse/aa",
+      const response = await axiosInstance.get(
+        "/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }

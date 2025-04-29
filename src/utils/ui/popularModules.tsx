@@ -9,7 +9,7 @@ import {
   } from "recharts";
   
   import { useEffect, useState } from "react";
-  import axios from "axios";
+import axiosInstance from "../axiosInstance";
   
   export function PopularModulesCard() {
     const [data, setData] = useState([]);
@@ -17,7 +17,7 @@ import {
   useEffect(() => {
     const fetchTopModules = async () => {
       try {
-        const response = await axios.get("https://intellecta-game-service.onrender.com/api/progress/top");
+        const response = await axiosInstance.get("/progress/top");
         setData(response.data.data); 
       } catch (error) {
         console.error("Failed to fetch top modules:", error);

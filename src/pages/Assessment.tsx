@@ -5,7 +5,7 @@ import { RxCross1 } from "react-icons/rx";
 import { toast } from "react-toastify";
 import SpinningLoader from "../components/Loaders/SpinningLoader";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 // Define an interface for the question structure
 interface AssessmentQuestion {
@@ -30,7 +30,7 @@ const Assessment = () => {
       try {
         setIsLoading(true);
         console.log("Fetching assessment questions");
-        const response = await axios.get(import.meta.env.VITE_ASSESSMENT_URL, { withCredentials: true});
+        const response = await axiosInstance.get(import.meta.env.VITE_ASSESSMENT_URL, { withCredentials: true});
         console.log('Assessment Questions Response:', response.data.questions);
 
         const transformedQuestions = response.data.questions.map((q: any) => ({
@@ -94,7 +94,7 @@ const Assessment = () => {
         }))
       };
 
-      const response = await axios.post("https://intellecta-ai-tutor.onrender.com/api/ai-tutor/evaluate",submissionData,{withCredentials: true});
+      const response = await axiosInstance.post("/ai-tutor/evaluate",submissionData,{withCredentials: true});
       setIsSubmitting(false);
       console.log('Assessment Evaluation Response:', response.data);
       toast.success('Assessment submitted successfully!');

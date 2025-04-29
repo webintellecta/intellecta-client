@@ -1,15 +1,15 @@
 import React from 'react'
 // import CourseCard from '../../../components/cards/courseCard/CourseCard'
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import LearningCards from '../../../components/cards/learingCards/LearningCards';
+import axiosInstance from '../../../utils/axiosInstance';
 
 const UserCourse:React.FC = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: [""],
     queryFn: async () => {
-      const response = await axios.get(
-        "https://intellecta-content-service.onrender.com/api/progress/allusercourse/aa",
+      const response = await axiosInstance.get(
+        "/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }

@@ -8,7 +8,7 @@ import { useAuthStore } from "../../../store/useAuthStore";
 import PlayNow from "../Games/PlayNow";
 import {motion} from 'framer-motion'
 import { toast } from "react-toastify";
-import axios from "axios";
+import axiosInstance from "../../../utils/axiosInstance";
 
 export const showToast = () => {
   toast.warn(
@@ -37,7 +37,7 @@ const GameHome = () => {
   const { data: recentgame } = useQuery({
     queryKey: ["recentgame"],
     queryFn: async () => {
-      const res = await axios.get("https://intellecta-game-service.onrender.com/api/games/latest/recent-game",
+      const res = await axiosInstance.get("/games/latest/recent-game",
         { withCredentials: true }
       );
       const games = res.data.games;

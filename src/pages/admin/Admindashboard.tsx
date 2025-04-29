@@ -43,7 +43,7 @@ const AdminDashboard = () => {
   const { data: topPerfomers, isLoading: topStudentsLoading} = useQuery({
     queryKey:["topPerfomers"],
     queryFn: async ()=> {
-      const res = await axiosInstance.get("https://intellecta-admin-service.onrender.com/api/admin/users/topPerformers")
+      const res = await axiosInstance.get("/admin/users/topPerformers")
       console.log(res.data);
       return res.data.data
     }

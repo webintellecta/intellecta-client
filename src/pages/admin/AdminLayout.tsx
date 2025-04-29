@@ -57,7 +57,7 @@ const AdminLayout = () => {
 
   const { mutate: logoutMutation } = useMutation({
     mutationFn: async () => {
-      const res = await axiosInstance.post("https://intellecta-user-service.onrender.com/api/user/admin-logout");
+      const res = await axiosInstance.post("/user/admin-logout");
       return res.data;
     },
     onSuccess: (data) => {

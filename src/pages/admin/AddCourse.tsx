@@ -4,8 +4,8 @@ import {
   ImageUpIcon,
   BookOpenTextIcon,
 } from "lucide-react";
-import axios from "axios";
 import { toast } from "react-toastify";
+import axiosInstance from "../../utils/axiosInstance";
 
 
 type CourseDetails = {
@@ -96,7 +96,7 @@ const AddCourse = () => {
       }
 
       console.log("Saving course with formData:", formData);
-      const response = await axios.post("https://intellecta-content-service.onrender.com/api/courses", formData);
+      const response = await axiosInstance.post("/courses", formData);
       console.log("Course creation response:", response);
       setCourseId(response.data.data._id); // Store the courseId in state
       toast.success("Course saved successfully!");
@@ -135,7 +135,7 @@ const AddCourse = () => {
         console.log(`${key}:`, value);
       }
 
-     await axios.post("https://intellecta-content-service.onrender.com/api/lessons", formData, {
+     await axiosInstance.post("/lessons", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -12,7 +12,7 @@ import {
 } from 'chart.js';
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import axiosInstance from '../../utils/axiosInstance';
 // import { color } from 'framer-motion';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -21,8 +21,8 @@ const BarChart:React.FC = () => {
   const {data, isLoading, error} = useQuery({
     queryKey: [""],
     queryFn: async () => {
-      const response = await axios.get(
-        "https://intellecta-content-service.onrender.com/api/progress/allusercourse/aa",
+      const response = await axiosInstance.get(
+        "/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }

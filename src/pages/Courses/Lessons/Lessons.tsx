@@ -8,7 +8,7 @@ import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { Lesson } from "../../../types";
 import { useQuery } from "@tanstack/react-query";
 import SpinningLoader from "../../../components/Loaders/SpinningLoader";
-import axios from "axios";
+import axiosInstance from "../../../utils/axiosInstance";
 
 type Params = {
   id: string;
@@ -35,8 +35,8 @@ const Lessons = () => {
 
   const fetchCourseProgress = async () => {
     try {
-      const response = await axios.get(
-        `https://intellecta-content-service.onrender.com/api/progress/${id}`,
+      const response = await axiosInstance.get(
+        `/progress/${id}`,
         { withCredentials: true }
       );
       return response.data.data;
@@ -47,7 +47,7 @@ const Lessons = () => {
   };
 
   const fetchCourseWithLessons = async () => {
-    const response = await axios.get(`https://intellecta-content-service.onrender.com/api/courses/${id}`);
+    const response = await axiosInstance.get(`/courses/${id}`);
     return response.data.data;
   };
 

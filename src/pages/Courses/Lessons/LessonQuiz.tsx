@@ -5,7 +5,6 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import NavbarWelcome from "../../../components/Navbar/NavbarWelcome";
 import QuizCompleted from "../../../utils/ui/QuizCompleted";
 import SpinningLoader from "../../../components/Loaders/SpinningLoader";
-import axios from "axios";
 import axiosInstance from "../../../utils/axiosInstance";
 
 type Params = {
@@ -47,7 +46,7 @@ const LessonQuiz = () => {
   const { mutate: postLessonQuiz, isPending } = useMutation({
     mutationFn: async (courseId: string) => {
       const res = await axiosInstance.post(
-        `https://intellecta-content-service.onrender.com/api/courses/generate-quiz`,
+        `/courses/generate-quiz`,
         {courseId}
       );
       return res.data;
@@ -63,8 +62,8 @@ const LessonQuiz = () => {
   const { data: quizData, isLoading } = useQuery({
     queryKey: ["quizLesson", courseId],
     queryFn: async () => {
-      const res = await axios.get(
-        `https://intellecta-content-service.onrender.com/api/courses/fetch-quiz/${courseId}`
+      const res = await axiosInstance.get(
+        `/courses/fetch-quiz/${courseId}`
       );
       return res.data.quiz || [];
     },
@@ -103,8 +102,8 @@ const LessonQuiz = () => {
 
   const { mutate: updateScore } = useMutation({
     mutationFn: async (values: UpdateScoreType) => {
-      const res = await axios.post(
-        "https://intellecta-content-service.onrender.com/api/progress/update/quiz-score",
+      const res = await axiosInstance.post(
+        "/progress/update/quiz-score",
         values,
         {
           withCredentials: true,

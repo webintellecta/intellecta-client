@@ -1,10 +1,10 @@
 import { HoverEffect } from "../../utils/ui/courseCards";
 import { Filter, X, SearchIcon } from "lucide-react";
 import AddCourseButton from "../../utils/ui/addcourseButton";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import AllStudentsLoader from "../../utils/ui/allStudentsLoader";
+import axiosInstance from "../../utils/axiosInstance";
 
 interface Course {
   _id: string;
@@ -33,8 +33,8 @@ const fetchAllCourses = async (
   search: string
 ): Promise<CourseResponse> => {
   console.log(grade);
-  const response = await axios.get(
-    `https://intellecta-content-service.onrender.com/api/courses?page=${page}&limit=6&grade=${grade}&subject=${subject}&search=${search}`
+  const response = await axiosInstance.get(
+    `/courses?page=${page}&limit=6&grade=${grade}&subject=${subject}&search=${search}`
   );
   console.log(response.data);
   return response.data.data;

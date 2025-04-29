@@ -9,7 +9,7 @@ import proplayerTrophy from "../../../assets/game/pro-player.png";
 import legendTrophy from "../../../assets/game/legend.png";
 import RotatingCard from "../../../utils/ui/RotatingCards";
 import LeaderboardLoading from "./LeaderboardLoading";
-import axios from "axios";
+import axiosInstance from "../../../utils/axiosInstance";
 
 interface UserRecentGamesType {
   _id: string;
@@ -25,8 +25,8 @@ const GameProfile = () => {
   const { data: userstats } = useQuery({
     queryKey: ["fetchUserleaderboard"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://intellecta-game-service.onrender.com/api/games/userbyid/leaderboard",
+      const res = await axiosInstance.get(
+        "/games/userbyid/leaderboard",
         { withCredentials: true }
       );
       return res.data?.leaderboard || {};
@@ -70,8 +70,8 @@ const GameProfile = () => {
   const { data: userRecentGames, isLoading } = useQuery({
     queryKey: ["userRecentgame"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://intellecta-game-service.onrender.com/api/games/latest/recent-game",
+      const res = await axiosInstance.get(
+        "/games/latest/recent-game",
         { withCredentials: true }
       );
       return res.data?.games || [];

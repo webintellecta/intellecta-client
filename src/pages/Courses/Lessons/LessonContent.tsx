@@ -13,10 +13,10 @@ import {
   FaVolumeMute,
   FaExpand,
 } from "react-icons/fa";
-import axios from "axios";
 import { useState, useRef, useEffect } from "react";
 import screenfull from "screenfull";
 import { toast } from "react-toastify";
+import axiosInstance from "../../../utils/axiosInstance";
 
 type Params = {
   lessonId: string;
@@ -104,8 +104,8 @@ const LessonContent = () => {
   // Fetch course progress
   const fetchCourseProgress = async () => {
     if (!courseId) throw new Error("Course ID is missing");
-    const response = await axios.get(
-      `https://intellecta-content-service.onrender.com/api/progress/${courseId}`,
+    const response = await axiosInstance.get(
+      `/progress/${courseId}`,
       { withCredentials: true }
     );
     return response.data.data;
@@ -120,8 +120,8 @@ const LessonContent = () => {
   // Fetch course with lessons
   const fetchCourseWithLessons = async () => {
     if (!courseId) throw new Error("Course ID is missing");
-    const response = await axios.get(
-      `https://intellecta-content-service.onrender.com/api/courses/${courseId}`
+    const response = await axiosInstance.get(
+      `/courses/${courseId}`
     );
     return response.data.data;
   };
@@ -141,8 +141,8 @@ const LessonContent = () => {
 
   // Fetch lesson content
   const fetchLessonContent = async () => {
-    const response = await axios.get(
-      `https://intellecta-content-service.onrender.com/api/courses/lessons/${lessonId}`
+    const response = await axiosInstance.get(
+      `/courses/lessons/${lessonId}`
     );
     return response.data.data;
   };
@@ -169,8 +169,8 @@ const LessonContent = () => {
     mutationFn: async () => {
       if (!lessonId || !courseId)
         throw new Error("Lesson or Course ID is missing");
-      const response = await axios.post(
-        `https://intellecta-content-service.onrender.com/api/progress/update`,
+      const response = await axiosInstance.post(
+        `/progress/update`,
         {
           courseId,
           lessonId,

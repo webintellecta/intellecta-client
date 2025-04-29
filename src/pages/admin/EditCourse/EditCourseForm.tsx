@@ -90,7 +90,7 @@ const EditCourseForm = () => {
   const handleSave = async () => {
     try {
       await axiosInstance.put(
-        `https://intellecta-content-service.onrender.com/api/courses/editCourse/${course._id}`,
+        `/courses/editCourse/${course._id}`,
         course
       );
       toast.success("course updated successfully!");
@@ -107,7 +107,7 @@ const EditCourseForm = () => {
             if (lesson._id) {
               formData.append("lessonData", JSON.stringify(lesson));
               await axiosInstance.put(
-                `https://intellecta-content-service.onrender.com/api/lessons/editLesson/${lesson._id}`,
+                `/lessons/editLesson/${lesson._id}`,
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
               );
@@ -129,7 +129,7 @@ const EditCourseForm = () => {
               formData.append("courseId", courseId || "");
 
               await axiosInstance.post(
-                `https://intellecta-content-service.onrender.com/api/lessons`,
+                `/lessons`,
                 formData,
                 { headers: { "Content-Type": "multipart/form-data" } }
               );
@@ -142,7 +142,7 @@ const EditCourseForm = () => {
       if (deletedLessonIds.length > 0) {
         await Promise.all(
           deletedLessonIds.map((id) =>
-            axiosInstance.delete(`https://intellecta-content-service.onrender.com/api/lessons/${id}`)
+            axiosInstance.delete(`/lessons/${id}`)
           )
         );
         toast.success("lessons deleted successfully!");

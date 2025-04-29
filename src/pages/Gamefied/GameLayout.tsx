@@ -10,7 +10,6 @@ import { userEndPoints } from "../../api/endPoints/userEndPoints";
 import DockLid from "./gameNav/DockLid";
 import violetemerald from "../../assets/game/violet-emerald.png";
 import "./Games.css";
-import axios from "axios";
 
 const GamesLayout = () => {
   const { fetchGames, fetchLeaderboard, games } = useGameStore();
@@ -40,7 +39,7 @@ const GamesLayout = () => {
   const { data: userstats } = useQuery({
     queryKey: ["fetchUserleaderboard"],
     queryFn: async () => {
-      const res = await axios.get("https://intellecta-game-service.onrender.com/api/games/userbyid/leaderboard",
+      const res = await axiosInstance.get("/games/userbyid/leaderboard",
         { withCredentials: true }
       );
       return res.data?.leaderboard || {};

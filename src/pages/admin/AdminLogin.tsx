@@ -24,7 +24,7 @@ const AdminLogin = () => {
       console.log(values);
       
       const res = await axiosInstance.post(
-        "https://intellecta-user-service.onrender.com/api/user/admin-login",
+        "/user/admin-login",
         values
       );
       return res.data;

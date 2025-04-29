@@ -3,9 +3,9 @@ import { GoChevronRight } from "react-icons/go";
 import { motion, AnimatePresence } from "framer-motion";
 import { CgClose } from "react-icons/cg";
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axiosInstance from "../../utils/axiosInstance";
 
 type CourseSidebarProps = {
   onClose: () => void;
@@ -52,8 +52,8 @@ const CourseSidebar: React.FC<CourseSidebarProps> = ({
       });
 
       try {
-        const response = await axios.get(
-          `https://intellecta-content-service.onrender.com/api/courses/${subject}/filter`,
+        const response = await axiosInstance.get(
+          `/courses/${subject}/filter`,
           {
             params: {
               gradeLevel: selectedGrades.length ? selectedGrades.join(",") : undefined,

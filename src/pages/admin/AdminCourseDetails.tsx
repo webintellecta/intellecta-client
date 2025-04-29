@@ -20,7 +20,7 @@ const AdminCourseDetailsPage = () => {
 
   const handleDelete = async () => {
       try {
-        const res = await axiosInstance.patch(`https://intellecta-content-service.onrender.com/api/courses/deleteCourse/${courseId}`);
+        const res = await axiosInstance.patch(`/courses/deleteCourse/${courseId}`);
         console.log("dddd ",res.data)
         navigate("/admin/courses");
       } catch (error) {

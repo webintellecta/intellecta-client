@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { toast } from "react-toastify";
-import axios from "axios";
+import axiosInstance from "../utils/axiosInstance";
 
 type Game = {
   _id: string;
@@ -64,7 +64,7 @@ export const useGameStore = create<GameStore>((set) => ({
   fetchGames: async () => {
     set({ loading: true });
     try {
-      const res = await axios.get("https://intellecta-game-service.onrender.com/api/games/allgames");
+      const res = await axiosInstance.get("/games/allgames");
       set({ games: res.data.games || [], loading: false });
     } catch (err) {
       console.error("Failed to fetch games:", err);
@@ -75,7 +75,7 @@ export const useGameStore = create<GameStore>((set) => ({
   fetchLeaderboard: async () => {
     try {
       set({leaderboardLoading: true})
-      const res = await axios.get("https://intellecta-game-service.onrender.com/api/games/users/leaderboard");
+      const res = await axiosInstance.get("/games/users/leaderboard");
       set({ leaderboard: res.data.leaderboard });
       set({leaderboardLoading: false})
     } catch (err) {
@@ -91,8 +91,8 @@ export const useGameStore = create<GameStore>((set) => ({
 
   submitGameSession: async ({ userId, gameSlug, score, timeTaken }) => {
     try {
-      const res = await axios.post(
-        "https://intellecta-game-service.onrender.com/api/games/game-session",
+      const res = await axiosInstance.post(
+        "/games/game-session",
         {
           userId,
           gameSlug,

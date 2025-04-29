@@ -20,7 +20,7 @@ const Notification = () => {
     queryKey: ["notification"],
     queryFn: async () => {
       const res = await axiosInstance.get(
-        "https://intellecta-notification-service.onrender.com/api/notification/get",
+        "/notification/get",
         { withCredentials: true }
       );
       return res.data.data;
