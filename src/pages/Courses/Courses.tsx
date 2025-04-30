@@ -221,7 +221,7 @@ const Courses = () => {
                     </div>
 
                     <Link
-                      to={`/course/${item.title.replace(/\s+/g, "-")}/${item._id}`}
+                      to={`/course/${category}/${item.title.replace(/\s+/g, "-")}/${item._id}`}
                       className="mt-4 block"
                     >
                       <button className="w-full px-4 py-2 text-sm sm:text-base font-medium text-white bg-violet-600 hover:bg-violet-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 transition-all duration-300">

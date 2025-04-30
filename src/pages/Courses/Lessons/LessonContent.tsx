@@ -170,7 +170,7 @@ const LessonContent = () => {
       if (!lessonId || !courseId)
         throw new Error("Lesson or Course ID is missing");
       const response = await axiosInstance.post(
-        `/progress/update`,
+        `/courses/progress/update`,
         {
           courseId,
           lessonId,

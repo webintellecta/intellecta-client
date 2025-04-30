@@ -37,17 +37,17 @@ const Notification = () => {
   return (
     <>
       <NavbarWelcome />
-      <div className="mx-36 mt-10">
+      <div className="md:mx-36 mt-10">
         <h2 className="text-3xl font-medium">Notification</h2>
         <div className="flex items-center border-b border-b-gray-300 justify-between mt-3">
-          <div className="flex gap-10">
+          <div className="flex md:gap-10 gap-5">
             <h4
               onClick={() => setSelectTab("all")}
               className={`${
                 selectTab === "all"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
             >
               General
             </h4>
@@ -57,7 +57,7 @@ const Notification = () => {
                 selectTab === "individual"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
             >
               Personal
             </h4>
@@ -67,7 +67,7 @@ const Notification = () => {
                 selectTab === "age-group"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
             >
               Group Notifications
             </h4>
