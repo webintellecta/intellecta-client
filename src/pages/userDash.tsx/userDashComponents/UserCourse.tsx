@@ -9,7 +9,7 @@ const UserCourse:React.FC = () => {
     queryKey: [""],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        "/progress/allusercourse/aa",
+        "/courses/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }
