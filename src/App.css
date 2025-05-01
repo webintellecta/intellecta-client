@@ -12,7 +12,9 @@
   scrollbar-width: none; /* Firefox */
 }
 
-
+.bg-darkBlue{
+  background-color: #081a37
+}
   .wheel-and-hamster {
     --dur: 1s;
     position: relative;

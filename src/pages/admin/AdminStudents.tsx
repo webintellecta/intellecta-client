@@ -34,6 +34,8 @@ const AdminStudents = () => {
     queryFn: () => fetchStudents({ page, search, catagory, isBlock }),
     placeholderData: [],
   });
+  console.log(error);
+  
 
   const handleDelete = (userId: string) => {
     mutation.mutate(userId);

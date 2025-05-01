@@ -49,7 +49,7 @@ const AdminLogin = () => {
   return (
     <div className="h-screen w-full">
       <div className="flex h-full">
-        <div className="bg-[#00008B] text-white w-4/6 flex flex-col relative overflow-hidden">
+        <div className="hidden bg-[#00008B] text-white md:w-4/6 md:flex flex-col relative overflow-hidden">
           <img
             src={elements}
             className="absolute max-h-screen z-0 opacity-30 pointer-events-none inset-0 w-full object-cover"
@@ -73,7 +73,7 @@ const AdminLogin = () => {
           </div>
         </div>
 
-        <div className="w-2/6 flex flex-col justify-center p-20">
+        <div className="md:w-2/6 w-[90%] mx-auto flex flex-col  justify-center md:p-20">
           <form onSubmit={handleSubmit} className="flex flex-col gap-5">
             <h3 className="font-semibold text-3xl">Welcome Back</h3>
 

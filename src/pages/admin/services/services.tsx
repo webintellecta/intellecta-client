@@ -34,7 +34,7 @@ export const fetchStudents = async (params:any) => {
   const response = await axiosInstance.get("/user/allUsers", {
     params,
   });
-
+  
   return response.data?.users || [];
 };
 

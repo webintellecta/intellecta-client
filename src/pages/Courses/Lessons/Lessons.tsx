@@ -36,7 +36,7 @@ const Lessons = () => {
   const fetchCourseProgress = async () => {
     try {
       const response = await axiosInstance.get(
-        `/progress/${id}`,
+        `/courses/progress/${id}`,
         { withCredentials: true }
       );
       return response.data.data;

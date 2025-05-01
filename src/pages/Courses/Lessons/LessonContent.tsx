@@ -105,9 +105,11 @@ const LessonContent = () => {
   const fetchCourseProgress = async () => {
     if (!courseId) throw new Error("Course ID is missing");
     const response = await axiosInstance.get(
-      `/progress/${courseId}`,
+      `/courses/progress/${courseId}`,
       { withCredentials: true }
     );
+    console.log("course progress ", response.data);
+    
     return response.data.data;
   };
 
@@ -269,7 +271,7 @@ const LessonContent = () => {
       );
     }
   };
-
+console.log(lessonData)
   return (
     <>
       <NavbarWelcome />

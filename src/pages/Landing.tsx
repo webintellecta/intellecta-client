@@ -66,7 +66,7 @@ const Landing: React.FC = () => {
     <>
     <Navbar/>
     {/* landing page - 1 */}
-    <div id="home" className="w-full h-screen flex flex-wrap-reverse md:flex-nowrap items-center justify-center text-white bg-overlay bg-[#081a37] px-5 md:px-36">
+    <div id="home" className="w-full h-screen flex flex-wrap-reverse md:flex-nowrap items-center justify-center text-white bg-overlay bg-darkBlue px-5 md:px-36">
       {/* Content */}
       <div className="text-center sm:text-left md:mb-16">
           <BlurText 

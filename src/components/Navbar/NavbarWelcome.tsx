@@ -47,7 +47,7 @@ const NavbarWelcome = () => {
     try {
       console.log("Logging out");
       await axiosInstance.post(userEndPoints.USER.LOGOUT);
-      localStorage.removeItem("isAuthenticated")
+      localStorage.removeItem("isAuthenticated");
       toast.success("You are successfully logged out");
       navigate("/");
     } catch (error: any) {
@@ -82,17 +82,19 @@ const NavbarWelcome = () => {
       {/* Navbar */}
       <nav className="flex items-center justify-between bg-[#031532]/90 backdrop-blur-lg border-b border-slate-800 px-4 md:px-36 py-3 shadow-xl relative z-40">
         {/* Logo Section */}
-        <div className="flex items-center gap-2 text-white">
-          <img src={wcpagelogo} alt="Logo" className="h-[26px] md:h-[32px]" />
-          <div className="leading-tight">
-            <h1 className="text-sm md:text-lg font-semibold text-blue-100 tracking-wide">
-              iNTELLECTA
-            </h1>
-            <h5 className="text-slate-400 text-[10px] md:text-xs">
-              Learn. Grow. Succeed.
-            </h5>
+        <Link to="/home">
+          <div className="flex items-center gap-2 text-white">
+            <img src={wcpagelogo} alt="Logo" className="h-[26px] md:h-[32px]" />
+            <div className="leading-tight">
+              <h1 className="text-sm md:text-lg font-semibold text-blue-100 tracking-wide">
+                iNTELLECTA
+              </h1>
+              <h5 className="text-slate-400 text-[10px] md:text-xs">
+                Learn. Grow. Succeed.
+              </h5>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* Center Nav Links */}
         <div className="hidden md:flex space-x-8 text-slate-300 font-medium text-sm">

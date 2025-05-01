@@ -37,17 +37,17 @@ const Notification = () => {
   return (
     <>
       <NavbarWelcome />
-      <div className="md:mx-36 mt-10">
-        <h2 className="text-3xl font-medium">Notification</h2>
+      <div className="md:mx-36 mt-10 mx-4">
+        <h2 className="text-xl md:text-3xl font-medium">Notification</h2>
         <div className="flex items-center border-b border-b-gray-300 justify-between mt-3">
-          <div className="flex md:gap-10 gap-5">
+          <div className="flex justify-between md:gap-10 gap-5">
             <h4
               onClick={() => setSelectTab("all")}
               className={`${
                 selectTab === "all"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg text-sm cursor-pointer transition-all duration-300 ease-in-out`}
             >
               General
             </h4>
@@ -57,7 +57,7 @@ const Notification = () => {
                 selectTab === "individual"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg text-sm cursor-pointer transition-all duration-300 ease-in-out`}
             >
               Personal
             </h4>
@@ -67,7 +67,7 @@ const Notification = () => {
                 selectTab === "age-group"
                   ? "text-blue-600 border-b-2 border-blue-600"
                   : "text-gray-500 border-b-2 border-transparent"
-              } md:text-lg cursor-pointer transition-all duration-300 ease-in-out`}
+              } md:text-lg text-sm cursor-pointer transition-all duration-300 ease-in-out`}
             >
               Group Notifications
             </h4>
@@ -97,7 +97,7 @@ const Notification = () => {
                     <div className="w-full">
                       <div className="flex items-center gap-2">
                         {typeObj && <span className={`text-lg  ${typeObj.type === "announcement" && "-rotate-12"}`}>{typeObj.icon}</span>}
-                        <h5 className="font-semibold text-lg">{noti.title}</h5>
+                        <h5 className="font-semibold md:text-lg ">{noti.title}</h5>
                       </div>
                       <div className="flex justify-between mt-1">
                         <p className="text-sm text-gray-700">{noti.message}</p>
