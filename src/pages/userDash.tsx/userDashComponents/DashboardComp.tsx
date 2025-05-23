@@ -14,7 +14,7 @@ const DashboardComp = () => {
     queryKey: [""],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        "/courses/progress/allusercourse/aa",
+        "/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }

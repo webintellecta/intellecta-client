@@ -30,7 +30,7 @@ const Assessment = () => {
       try {
         setIsLoading(true);
         console.log("Fetching assessment questions");
-        const response = await axiosInstance.get(import.meta.env.VITE_ASSESSMENT_URL, { withCredentials: true});
+        const response = await axiosInstance.get(import.meta.env.VITE_ASSESSMENT_URL);
         console.log('Assessment Questions Response:', response.data.questions);
 
         const transformedQuestions = response.data.questions.map((q: any) => ({
@@ -94,7 +94,7 @@ const Assessment = () => {
         }))
       };
 
-      const response = await axiosInstance.post("/ai-tutor/evaluate",submissionData,{withCredentials: true});
+      const response = await axiosInstance.post("/ai-tutor/evaluate",submissionData);
       setIsSubmitting(false);
       console.log('Assessment Evaluation Response:', response.data);
       toast.success('Assessment submitted successfully!');

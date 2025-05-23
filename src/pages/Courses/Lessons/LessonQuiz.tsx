@@ -103,7 +103,7 @@ const LessonQuiz = () => {
   const { mutate: updateScore } = useMutation({
     mutationFn: async (values: UpdateScoreType) => {
       const res = await axiosInstance.post(
-        "/courses/progress/update/quiz-score",
+        "/progress/update/quiz-score",
         values,
         {
           withCredentials: true,

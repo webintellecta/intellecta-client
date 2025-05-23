@@ -105,7 +105,7 @@ const LessonContent = () => {
   const fetchCourseProgress = async () => {
     if (!courseId) throw new Error("Course ID is missing");
     const response = await axiosInstance.get(
-      `/courses/progress/${courseId}`,
+      `/progress/${courseId}`,
       { withCredentials: true }
     );
     console.log("course progress ", response.data);
@@ -118,6 +118,7 @@ const LessonContent = () => {
     queryFn: fetchCourseProgress,
     enabled: !!courseId,
   });
+console.log("progresss ",progressData);
 
   // Fetch course with lessons
   const fetchCourseWithLessons = async () => {
@@ -172,12 +173,11 @@ const LessonContent = () => {
       if (!lessonId || !courseId)
         throw new Error("Lesson or Course ID is missing");
       const response = await axiosInstance.post(
-        `/courses/progress/update`,
+        `/progress/update`,
         {
           courseId,
           lessonId,
         },
-        { withCredentials: true }
       );
       return response.data.data;
     },

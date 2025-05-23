@@ -9,7 +9,7 @@ const UserCourse:React.FC = () => {
     queryKey: [""],
     queryFn: async () => {
       const response = await axiosInstance.get(
-        "/courses/progress/allusercourse/aa",
+        "/progress/allusercourse/aa",
         {
           withCredentials: true, // Include cookies
         }
@@ -37,7 +37,7 @@ const UserCourse:React.FC = () => {
     <div className='w-full  mt-10 flex flex-wrap gap-5 justify-around items-center'>
       {
               data?.map((item:any,index:number)=>(
-                <LearningCards key={index+1} progress={item.progressPercent} title={item.courseId.title} />
+                <LearningCards key={index+1} progress={item.progressPercent} course={item} title={item.courseId.title} />
               ))
             }
       

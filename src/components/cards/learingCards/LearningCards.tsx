@@ -1,16 +1,45 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { data, useNavigate } from "react-router-dom"; // Import useNavigate
+import axiosInstance from "../../../utils/axiosInstance";
+import { useQuery } from "@tanstack/react-query";
 
 interface LearningCardProp {
+  course: {
+    courseId: {
+      _id:string
+    }
+  }
   progress: number;
   title: string;
 }
 
-const LearningCards: React.FC<LearningCardProp> = ({ progress, title }) => {
+const LearningCards: React.FC<LearningCardProp> = ({
+  course,
+  progress,
+  title,
+}) => {
   const navigate = useNavigate(); // Initialize useNavigate
 
+  console.log(course);
+  
+  const { data: courseData } = useQuery({
+    queryKey: ['courseDataUser'],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/courses/${course.courseId._id}`)
+      return response.data.data.course || [];
+    },
+    enabled: !!course
+  })
+  
+  const handleCourse = () => {
+    if(courseData){
+      navigate(`/course/${courseData.subject}/${courseData.title}/${courseData._id}`);
+    }
+  };
+
+  
   return (
     <motion.div
       className="w-96 h-44 px-4 flex items-center bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-lg transition-shadow duration-300 justify-between gap-3 max-w-md"
@@ -46,12 +75,11 @@ const LearningCards: React.FC<LearningCardProp> = ({ progress, title }) => {
           ></motion.div>
         </div>
       </div>
-
       <motion.button
         className="ml-2 px-2 py-1 text-black/50 hover:text-black border text-xs font-medium rounded-lg transition-colors duration-300 flex justify-center items-center gap-1"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => navigate("/courses")} // Navigate to /courses
+        onClick={handleCourse} // Navigate to /courses
       >
         Continue <FaArrowRight />
       </motion.button>
